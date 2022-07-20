@@ -1,0 +1,13 @@
+.dashboard {
+  width: 50%;
+}
+.table-moncompte {
+  width: 100%;
+}
+
+.table-moncompte tr {
+  border: 1px solid #444;
+}
+
+.table-moncompte > tr > td {
+}

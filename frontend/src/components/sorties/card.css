@@ -4,6 +4,8 @@
   border: 1px solid rgb(138, 137, 137);
   margin-top: 1rem;
   height: auto;
+  width: 100%;
+  max-width: 800px;
 }
 .card h3 {
   display: flex;
@@ -28,8 +30,16 @@
   text-align: center;
   background-color: rgb(24, 44, 13);
   font-weight: 600;
+  font-size: 1rem;
   margin-right: 1rem;
 }
+
+@media screen and (max-width: 900px) {
+  .card h3 span {
+    font-size: 0.8rem;
+  }
+}
+
 .card h3 span .icon {
   margin: 0.5rem 0.5rem 0.5rem 0;
 }

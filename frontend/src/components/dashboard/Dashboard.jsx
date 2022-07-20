@@ -1,28 +1,72 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import api from "@services/api";
+import "./dashboard.css";
 
 export default function Dashboard() {
+  const [marcheurs, setMarcheursList] = useState("");
+  const [marcheur, setMarcheurInfos] = useState({});
+
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/marcheurs")
-      .then(function (response) {
-        // en cas de réussite de la requête
-        console.warn(response);
-      })
-      .catch(function (error) {
-        // en cas d’échec de la requête
-        console.warn(error);
-      })
-      .then(function () {
-        // dans tous les cas
-      });
+    api
+      .get(`/marcheurs`)
+      .then((res) => setMarcheursList(res.data.map((e) => e)))
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    api
+      .get(`/marcheurs/2`)
+      .then((res) => setMarcheurInfos(res.data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
     <div className="dashboard">
       <h2>Les amis de mon groupe</h2>
-      <table>
-        <tr />
+      <table className="table-moncompte listeAmis">
+        {marcheurs &&
+          marcheurs.map((element) => (
+            <tr>
+              <td>{element.nom}</td>
+              <td>{element.prenom}</td>
+            </tr>
+          ))}
+      </table>
+      <h2>Mes informations</h2>
+
+      <table className="table-moncompte info">
+        <tr>
+          <td>{marcheur.nom}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.prenom}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.adresse_rue}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.adresse_cp}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.adresse_ville}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.email}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.tel}</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <td>{marcheur.femme ? "Femme" : "Homme"}</td>
+          <th>...</th>
+        </tr>
       </table>
     </div>
   );

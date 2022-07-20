@@ -47,7 +47,8 @@ $lilac-medium: #c29fc1ff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 2.5vh auto;
   border-radius: 5px;
-  width: 800px;
+  min-width: 600px;
+  max-width: 800px;
   height: 90vh;
   padding: 20px;
 }
