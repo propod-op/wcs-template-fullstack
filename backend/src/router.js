@@ -11,9 +11,17 @@ router.post("/items", ItemController.add);
 router.delete("/items/:id", ItemController.delete);
 
 router.get("/marcheurs", MarcheurController.browse);
-// router.get("/marcheurs/:id", MarcheurController.read);
-// router.put("/marcheurs/:id", MarcheurController.edit);
-// router.post("/marcheurs", MarcheurController.add);
-// router.delete("/marcheurs/:id", MarcheurController.delete);
+router.get("/marcheurs/:id", MarcheurController.read);
+router.post("/marcheurs", MarcheurController.add);
+router.put("/marcheurs/:id", MarcheurController.edit);
+router.delete("/marcheurs/:id", MarcheurController.delete);
+
+/*
+router.get("/sorties", SortiesController.browse);
+router.get("/sorties/:id", MarcheurController.read);
+router.post("/sorties", MarcheurController.add);
+router.put("/sorties/:id", MarcheurController.edit);
+router.delete("/sorties/:id", MarcheurController.delete);
+*/
 
 module.exports = router;

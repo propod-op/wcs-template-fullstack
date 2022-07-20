@@ -2,7 +2,7 @@ const models = require("../models");
 
 class MarcheurController {
   static browse = (req, res) => {
-    models.item
+    models.marcheurs
       .findAll()
       .then(([rows]) => {
         res.send(rows);
@@ -14,7 +14,7 @@ class MarcheurController {
   };
 
   static read = (req, res) => {
-    models.item
+    models.marcheurs
       .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
@@ -29,6 +29,22 @@ class MarcheurController {
       });
   };
 
+  static add = (req, res) => {
+    const item = req.body;
+
+    // TODO validations (length, format...)
+
+    models.marcheurs
+      .insert(item)
+      .then(([result]) => {
+        res.status(201).send({ ...item, id: result.insertId });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static edit = (req, res) => {
     const item = req.body;
 
@@ -36,7 +52,7 @@ class MarcheurController {
 
     item.id = parseInt(req.params.id, 10);
 
-    models.item
+    models.marcheurs
       .update(item)
       .then(([result]) => {
         if (result.affectedRows === 0) {
@@ -51,24 +67,8 @@ class MarcheurController {
       });
   };
 
-  static add = (req, res) => {
-    const item = req.body;
-
-    // TODO validations (length, format...)
-
-    models.item
-      .insert(item)
-      .then(([result]) => {
-        res.status(201).send({ ...item, id: result.insertId });
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
   static delete = (req, res) => {
-    models.item
+    models.marcheurs
       .delete(req.params.id)
       .then(() => {
         res.sendStatus(204);

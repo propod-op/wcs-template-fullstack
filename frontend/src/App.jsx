@@ -7,8 +7,7 @@ import Preferences from "@components/preferences/Preferences";
 import Sorties from "@components/sorties/Sorties";
 import Login from "@components/login/Login";
 import useToken from "@components/app/useToken";
-import { FaTimes, FaRegCalendarAlt, FaShoePrints, FaRunning } from "react-icons/fa";
-
+import { FaRegCalendarAlt, FaShoePrints, FaRunning } from "react-icons/fa";
 
 function App() {
   const { token, setToken } = useToken();
@@ -23,13 +22,17 @@ function App() {
       <BrowserRouter>
         <div className="nav">
           <Link to="/sorties">
-            <FaShoePrints className="icon" /> sorties
+            <FaRunning className="icon" />
+            sorties
           </Link>
           <Link to="/add">
             <FaRegCalendarAlt className="icon" />
             Créer une sortie
           </Link>
-          <Link to="/dashboard">Mon compte</Link>
+          <Link to="/dashboard">
+            <FaShoePrints className="icon" />
+            Mon compte
+          </Link>
         </div>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
