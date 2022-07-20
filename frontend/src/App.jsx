@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Dashboard from "@components/dashboard/Dashboard";
 import Preferences from "@components/preferences/Preferences";
+import Sorties from "@components/sorties/Sorties";
 import Login from "@components/login/Login";
 import useToken from "@components/app/useToken";
 
@@ -15,16 +16,17 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>Application</h1>
+      <h1>Hekaxapa</h1>
       <BrowserRouter>
-        <main>
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
-          <Routes>
-            <Route path="/preferences" element={<Preferences />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+        <Routes>
+          <Route path="/preferences" element={<Preferences />} />
+        </Routes>
+        <Routes>
+          <Route path="/sorties" element={<Sorties />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

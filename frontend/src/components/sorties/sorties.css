@@ -1,0 +1,13 @@
+.leaflet-container {
+  height: 100%;
+  width: 300px;
+}
+
+.map {
+  width: 800px;
+  height: 300px;
+}
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
