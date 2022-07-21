@@ -109,35 +109,3 @@ $lilac-medium: #c29fc1ff;
   align-items: center;
 }
 
-/* ------------------ ACCOUNT CREATE ************************ */
-.wrapper-create-account {
-  width: 40%;
-  text-align: center;
-}
-
-.wrapper-create-account input[type="text"],
-.wrapper-create-account input[type="password"] {
-  margin-top: 0.75rem;
-  height: 1.2em;
-}
-
-.wrapper-create-account input[type="text"]::placeholder {
-  text-align: center;
-  font-style: italic;
-}
-
-.radio-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 5px;
-}
-
-input[type="radio"] {
-  margin: 0.3rem 1rem 0.5rem 0.5rem;
-}
-
-.wrapper-create-account button {
-  margin-top: 2rem;
-  height: 2.5em;
-}

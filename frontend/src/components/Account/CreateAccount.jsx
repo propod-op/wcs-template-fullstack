@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import api from "@services/api";
 
 export default function CreateAccount() {
-  const [marcheur, setMarcheur] = React.useState({
+  const [marcheur, setMarcheur] = useState({
     femme: 0,
   });
+
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setMarcheur({
@@ -22,15 +24,11 @@ export default function CreateAccount() {
         .then((data) => {
           if (data) {
             console.warn("L'enregistrement à réussi !");
-            /* localStorage.setItem("user", JSON.stringify(data));
-            setUserIsConnected(true);
-            setTimeout(() => {
-              window.location = "/";
-            }, 1000);
-            */
+            setMessage("L'enregistrement à réussi !");
           }
         });
     } else {
+      setMessage("Merci de saisir des mots de passe identiques.");
       console.warn("Merci de saisir des mots de passe identiques.");
     }
   };
@@ -44,48 +42,56 @@ export default function CreateAccount() {
           name="pseudo"
           placeholder="Entrer un pseudo"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="nom"
           placeholder="Entrer votre nom"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="prenom"
           placeholder="Entrer votre prénom"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="adresse_rue"
           placeholder="Entrer votre adresse (rue)"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="adresse_cp"
           placeholder="Entrer votre code postal (cp)"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="adresse_ville"
           placeholder="Entrer votre ville (ville)"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="email"
           placeholder="Entrer votre email"
           onChange={handleChange}
+          required
         />
         <input
           type="text"
           name="tel"
           placeholder="Entrer votre telephone"
           onChange={handleChange}
+          required
         />
         {/* <div className="radio-wrapper">
           <input type="radio" value="true" name="femme" /> Femme
@@ -98,20 +104,23 @@ export default function CreateAccount() {
           type="text"
           placeholder="Numéro personne à appeler en cas d'urgence"
           onChange={handleChange}
+          required
         />
         <input
           name="password"
           type="password"
           placeholder="Votre mot de passe"
           onChange={handleChange}
+          required
         />
         <input
           name="confirmpassword"
           type="password"
           placeholder="Confirmez votre mot de passe"
           onChange={handleChange}
+          required
         />
-
+        <p className="loginMessage">{message}</p>
         <button type="submit">S'inscrire</button>
       </form>
     </div>
