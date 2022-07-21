@@ -5,6 +5,7 @@ import "./nav.css";
 import Dashboard from "@components/dashboard/Dashboard";
 import Preferences from "@components/preferences/Preferences";
 import Sorties from "@components/sorties/Sorties";
+import Add from "@components/sorties/Add";
 import Login from "@components/login/Login";
 import CreateAccount from "@components/Account/CreateAccount";
 import { FaRegCalendarAlt, FaShoePrints, FaRunning } from "react-icons/fa";
@@ -40,6 +41,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/sorties" element={<Sorties />} />
+        </Routes>
+        <Routes>
+          <Route path="/add" element={<Add />} />
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />

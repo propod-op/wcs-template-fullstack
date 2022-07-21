@@ -1,0 +1,6 @@
+p.loginMessage {
+  background-color: #ffffffcc;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: width 2000s;
+}

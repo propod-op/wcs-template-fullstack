@@ -22,8 +22,12 @@ class MarcheurController {
           {
             id: result[0].id,
             pseudo: result[0].pseudo,
+            nom: result[0].nom,
+            prenom: result[0].prenom,
             email: result[0].email,
-            role: result[0].role,
+            tel: result[0].tel,
+            tel_urgence: result[0].tel_urgence,
+            adresse: `${result[0].adresse_rue} - ${result[0].adresse_cp} - ${result[0].adresse_ville}`,
           },
           process.env.JWTTOKEN_SECRET ?? "JWTTOKEN_SECRET",
           { expiresIn: "36h" }
@@ -65,7 +69,7 @@ class MarcheurController {
       });
   };
 
-  static add = (req, res) => {
+  static add = async (req, res) => {
     const item = req.body;
 
     models.marcheurs
@@ -77,7 +81,7 @@ class MarcheurController {
         delete item.confirmpassword;
         item.password = hash;
         console.warn(item);
-        res.status(201).send(item);
+        res.status(201).send({ ...item, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);

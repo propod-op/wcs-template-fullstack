@@ -92,3 +92,11 @@ div.ListeParticipants {
 .ListeParticipants span:first-child {
   color: red;
 }
+
+.table-nouvelle-sortie {
+  width: 100%;
+}
+.table-nouvelle-sortie input {
+  border: none;
+  height: 2.5rem;
+}

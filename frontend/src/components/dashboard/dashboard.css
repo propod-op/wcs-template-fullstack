@@ -20,6 +20,16 @@
 }
 
 /* ------ LISTE D'AMIS----------- */
+.listeAmis .entete {
+  height: 3rem;
+  background-color: #101935ff;
+  color: #f2fdff;
+  text-align: left;
+}
+.listeAmis .entete th {
+  padding-left: 1rem;
+}
+
 .listeAmis td:nth-child(1),
 .listeAmis td:nth-child(2),
 .listeAmis td:nth-child(3) {
@@ -29,7 +39,7 @@
 }
 @media screen and (max-width: 900px) {
   .listeAmis td:nth-child(4) {
-    display: none;
+    /*display: none;*/
   }
 }
 
