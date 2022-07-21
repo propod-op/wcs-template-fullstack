@@ -1,9 +1,9 @@
 .nav {
-  width: 100%;
+  max-width: 800px;
   height: 2.5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .nav .icon {
@@ -14,19 +14,26 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 5px 10px;
-  width: 60%;
+  width: auto;
 
   outline: none;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: #182c0dff;
   font-weight: 500;
+  font-stretch: extra-condensed;
   border-radius: 4px;
 }
 
 .nav > a:hover {
   background-color: #182c0dff;
   color: #f2fdff;
+}
+
+@media screen and (max-width: 900px) {
+  .nav > a {
+    font-size: 1rem;
+  }
 }

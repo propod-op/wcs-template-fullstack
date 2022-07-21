@@ -29,6 +29,13 @@ export default function Dashboard() {
             <tr>
               <td>{element.nom}</td>
               <td>{element.prenom}</td>
+              <td>{element.tel}</td>
+              <td>
+                <button className="changeInfo" type="button">
+                  {" "}
+                  +{" "}
+                </button>
+              </td>
             </tr>
           ))}
       </table>
@@ -36,36 +43,76 @@ export default function Dashboard() {
 
       <table className="table-moncompte info">
         <tr>
+          <td>Pseudo : {marcheur.pseudo}</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
+        </tr>
+        <tr>
           <td>{marcheur.nom}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.prenom}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.adresse_rue}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.adresse_cp}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.adresse_ville}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.email}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.tel}</td>
-          <td>...</td>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
         <tr>
           <td>{marcheur.femme ? "Femme" : "Homme"}</td>
-          <th>...</th>
+          <td>
+            <button className="changeInfo" type="button">
+              ...
+            </button>
+          </td>
         </tr>
       </table>
     </div>

@@ -1,4 +1,6 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import api from "@services/api";
 import "./login.css";
 import PropTypes from "prop-types";
 
@@ -15,20 +17,32 @@ async function loginUser(credentials) {
 export default function Login({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  // eslint-disable-next-line no-unused-vars
+  const [loginData, setLoginData] = React.useState({
+    email: "olivier.pochic@orange.fr",
+    passowrd: "7ipa",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    api
+      .post("/marcheurs", loginData, { withCredentials: true })
+      .then((res) => res.data)
+      .then((data) => {
+        if (data) {
+          console.warn("L'enregistrement à réussi !");
+        }
+      });
+
     const token = await loginUser({
       username,
       password,
     });
     setToken(token);
-    const navigate = useNavigate();
-    navigate("../dashboard", { replace: true });
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="">
       <h1>Merci de vous logger</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -43,6 +57,7 @@ export default function Login({ setToken }) {
           />
         </label>
         <button type="submit"> Se logger </button>
+        <Link to="/create-account">Créer un compte</Link>
       </form>
     </div>
   );

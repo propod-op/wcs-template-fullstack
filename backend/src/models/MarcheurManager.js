@@ -5,8 +5,9 @@ class MarcheurManager extends AbstractManager {
 
   insert(marcheur) {
     return this.connection.query(
-      `insert into ${MarcheurManager.table} (nom, prenom, adresse_rue, adresse_cp, adresse_ville, email, tel, femme) values (? , ? , ? , ?, ?, ?, ?, ? )`,
+      `insert into ${MarcheurManager.table} (pseudo, nom, prenom, adresse_rue, adresse_cp, adresse_ville, email, tel, femme, tel_urgence, password) values (? , ? , ? , ?, ?, ?, ?, ?, ?, ?, ? )`,
       [
+        marcheur.pseudo,
         marcheur.nom,
         marcheur.prenom,
         marcheur.adresse_rue,
@@ -15,14 +16,17 @@ class MarcheurManager extends AbstractManager {
         marcheur.email,
         marcheur.tel,
         marcheur.femme,
+        marcheur.tel_urgence,
+        marcheur.password,
       ]
     );
   }
 
   update(marcheur) {
     return this.connection.query(
-      `update ${MarcheurManager.table} set nom = ?, prenom = ?, adresse_rue = ?, adresse_cp = ?, adresse_ville = ?, email = ?, tel = ?, femme = ? where id = ?`,
+      `update ${MarcheurManager.table} set pseudo = ?, nom = ?, prenom = ?, adresse_rue = ?, adresse_cp = ?, adresse_ville = ?, email = ?, tel = ?, femme = ?, tel_urgence = ?, password = ? where id = ?`,
       [
+        marcheur.pseudo,
         marcheur.nom,
         marcheur.prenom,
         marcheur.adresse_rue,
@@ -31,6 +35,8 @@ class MarcheurManager extends AbstractManager {
         marcheur.email,
         marcheur.tel,
         marcheur.femme,
+        marcheur.tel_urgence,
+        marcheur.password,
         marcheur.id,
       ]
     );

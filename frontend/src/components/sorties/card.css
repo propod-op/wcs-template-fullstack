@@ -1,8 +1,7 @@
 .card {
   border-radius: 6px;
-  overflow: hidden;
   border: 1px solid rgb(138, 137, 137);
-  margin-top: 1rem;
+  margin-top: 1.7rem;
   height: auto;
   width: 100%;
   max-width: 800px;
@@ -15,7 +14,7 @@
   height: 2.5rem;
   background-color: #008500ff;
   color: #f5f2f7ff;
-  font-weight: 200;
+  font-weight: 400;
   margin: 0px !important;
 }
 
@@ -40,7 +39,8 @@
   }
 }
 
-.card h3 span .icon {
+.card h3 span .icon,
+.ListeParticipants .icon {
   margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
@@ -59,19 +59,21 @@
   background: transparent;
 }
 
-ul.ListeParticipants {
+div.ListeParticipants {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: start;
   align-items: center;
   margin: 0;
   padding: 0;
-  height: 3rem;
-  width: 100%;
+  height: auto;
+  max-width: 800px;
   list-style: none;
   background-color: rgb(192, 191, 191);
 }
-.ListeParticipants li {
+
+.ListeParticipants span {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -82,8 +84,11 @@ ul.ListeParticipants {
   border-radius: 3px;
 }
 
-.ListeParticipants li .crossTag {
-  margin-right: 4px;
-  margin-top: 3px;
-  padding: 4px;
+.ListeParticipants span {
+  /*color: #008500ff;*/
+  color: white;
+}
+
+.ListeParticipants span:first-child {
+  color: red;
 }

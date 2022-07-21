@@ -4,7 +4,12 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./card.css";
 import "leaflet/dist/leaflet.css";
 // import { FaRegCheckCircle, FaTimes, FaRegCalendarAlt, FaThumbsDown, FaThumbsUp, FaSmileWink, FaShoePrints, FaRunning, FaHourglassHalf,FaHeartbeat,FaCommentDots,FaCocktail } from "react-icons/fa";
-import { FaRegCheckCircle, FaRegCalendarAlt } from "react-icons/fa";
+import {
+  FaRegCheckCircle,
+  FaRegCalendarAlt,
+  FaThumbsDown,
+  FaThumbsUp,
+} from "react-icons/fa";
 
 export default function Card() {
   const position = [47.89703659550325, 1.8765192934232038];
@@ -38,16 +43,52 @@ export default function Card() {
         </span>
         Liste des participants
       </h3>
-      <ul className="ListeParticipants">
-        <li>Rodolphe</li>
-        <li>Sophie</li>
-        <li>Christine</li>
-        <li>Eric</li>
-        <li>Mouss</li>
-        <li>Helene</li>
-        <li>Domi</li>
-        <li>Laetitia</li>
-      </ul>
+      <div className="ListeParticipants">
+        <span>
+          <FaThumbsDown className="icon" />
+          Rodolphe
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Christine
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Hélène
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Nomaralonge
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Sophie
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Christine
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Eric
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Mouss
+        </span>
+        <span>
+          <FaThumbsUp className="icon" />
+          Helene
+        </span>
+        <span>
+          <FaThumbsDown className="icon" />
+          Domi
+        </span>
+        <span>
+          <FaThumbsDown className="icon" />
+          Laetitia
+        </span>
+      </div>
     </div>
   );
 }

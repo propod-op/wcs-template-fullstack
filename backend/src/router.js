@@ -10,6 +10,8 @@ router.put("/items/:id", ItemController.edit);
 router.post("/items", ItemController.add);
 router.delete("/items/:id", ItemController.delete);
 
+/* router.get("/login", MarcheurController.login); */
+
 router.get("/marcheurs", MarcheurController.browse);
 router.get("/marcheurs/:id", MarcheurController.read);
 router.post("/marcheurs", MarcheurController.add);

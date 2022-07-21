@@ -45,6 +45,19 @@ class MarcheurController {
       });
   };
 
+  static login = (req, res) => {
+    const item = req.body;
+    models.marcheurs
+      .login(item)
+      .then(([result]) => {
+        res.status(201).send({ ...item, id: result.insertId });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static edit = (req, res) => {
     const item = req.body;
 
