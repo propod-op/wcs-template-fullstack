@@ -45,10 +45,10 @@ if (fs.existsSync(reactIndexFile)) {
   });
 }
 
-app.use("/login", (req, res) => {
+/* app.use("/login", (req, res) => {
   res.send({
     token: "test123",
   });
-});
+}); */
 // ready to export
 module.exports = app;

@@ -41,6 +41,13 @@ class MarcheurManager extends AbstractManager {
       ]
     );
   }
+
+  login(data) {
+    return this.connection.query(
+      `SELECT * FROM ${MarcheurManager.table} WHERE email = ? AND password = ?`,
+      [data.email, data.password]
+    );
+  }
 }
 
 module.exports = MarcheurManager;

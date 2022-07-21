@@ -18,6 +18,7 @@ router.post("/marcheurs", MarcheurController.add);
 router.put("/marcheurs/:id", MarcheurController.edit);
 router.delete("/marcheurs/:id", MarcheurController.delete);
 
+router.post("/login", MarcheurController.login);
 /*
 router.get("/sorties", SortiesController.browse);
 router.get("/sorties/:id", MarcheurController.read);

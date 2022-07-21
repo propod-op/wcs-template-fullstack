@@ -1,6 +1,39 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+const jwt = require("jsonwebtoken");
 const models = require("../models");
 
 class MarcheurController {
+  static login = (req, res) => {
+    const item = req.body;
+
+    // TODO validations (length, format...)
+
+    models.marcheurs
+      .login(item)
+      .then(([result]) => {
+        console.warn(result);
+        // eslint-disable-next-line no-param-reassign
+        delete result[0].password;
+
+        const token = jwt.sign(
+          {
+            id: result[0].id,
+            pseudo: result[0].pseudo,
+            email: result[0].email,
+            role: result[0].role,
+          },
+          "process.env.SECRET_JWT",
+          { expiresIn: "36h" }
+        );
+        res.cookie("cookie_hekaxapa", token);
+        res.status(200).json(result);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static browse = (req, res) => {
     models.marcheurs
       .findAll()
@@ -36,19 +69,6 @@ class MarcheurController {
 
     models.marcheurs
       .insert(item)
-      .then(([result]) => {
-        res.status(201).send({ ...item, id: result.insertId });
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
-  static login = (req, res) => {
-    const item = req.body;
-    models.marcheurs
-      .login(item)
       .then(([result]) => {
         res.status(201).send({ ...item, id: result.insertId });
       })
