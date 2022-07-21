@@ -1,6 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const bcrypt = require("bcrypt");
 const models = require("../models");
+
+const saltRounds = 10;
 
 class MarcheurController {
   static login = (req, res) => {
@@ -14,7 +18,6 @@ class MarcheurController {
         console.warn(result);
         // eslint-disable-next-line no-param-reassign
         delete result[0].password;
-
         const token = jwt.sign(
           {
             id: result[0].id,
@@ -22,7 +25,7 @@ class MarcheurController {
             email: result[0].email,
             role: result[0].role,
           },
-          "process.env.SECRET_JWT",
+          process.env.JWTTOKEN_SECRET ?? "JWTTOKEN_SECRET",
           { expiresIn: "36h" }
         );
         res.cookie("cookie_hekaxapa", token);
@@ -65,12 +68,16 @@ class MarcheurController {
   static add = (req, res) => {
     const item = req.body;
 
-    // TODO validations (length, format...)
-
     models.marcheurs
       .insert(item)
+      // eslint-disable-next-line no-unused-vars
       .then(([result]) => {
-        res.status(201).send({ ...item, id: result.insertId });
+        const hash = bcrypt.hashSync(item.password, saltRounds).toString();
+        console.warn(`Hashed : ${hash}`);
+        delete item.confirmpassword;
+        item.password = hash;
+        console.warn(item);
+        res.status(201).send(item);
       })
       .catch((err) => {
         console.error(err);

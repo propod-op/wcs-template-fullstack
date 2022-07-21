@@ -2,21 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "@services/api";
 import "./login.css";
-import PropTypes from "prop-types";
 
-async function loginUser(credentials) {
-  return fetch("http://localhost:5000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
-
-export default function Login({ setToken }) {
+export default function Login() {
+  // eslint-disable-next-line no-unused-vars
   const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+  // eslint-disable-next-line no-unused-vars
+  const [pass, setPassword] = useState();
   // eslint-disable-next-line no-unused-vars
   const [loginData, setLoginData] = React.useState({
     email: "olivier.pochic@orange.fr",
@@ -24,21 +15,26 @@ export default function Login({ setToken }) {
   });
 
   const handleSubmit = async (e) => {
+    const infos = {
+      email: username,
+      password: pass,
+    };
+
     e.preventDefault();
     api
-      .post("/marcheurs", loginData, { withCredentials: true })
+      .post("/login", infos, { withCredentials: true })
       .then((res) => res.data)
       .then((data) => {
         if (data) {
-          console.warn("L'enregistrement à réussi !");
+          console.warn("Le login à réussi !");
+          return true;
         }
+        return false;
+      })
+      .catch((err) => {
+        console.warn("Le login refusé.");
+        console.error(err);
       });
-
-    const token = await loginUser({
-      username,
-      password,
-    });
-    setToken(token);
   };
 
   return (
@@ -62,7 +58,3 @@ export default function Login({ setToken }) {
     </div>
   );
 }
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
